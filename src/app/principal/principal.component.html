@@ -7,8 +7,7 @@
             close
         </mat-icon>
     </button>
-    Gestión de estudiantes
-    <a mat-raised-button class="ml-auto" target="_blank">AÑADIR NUEVO ESTUDIANTE</a>
+    <mat-icon>verified_user</mat-icon> Gestión de estudiantes
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -17,12 +16,12 @@
         <img class="avatar mat-elevation-z8"
             src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
 
-        <h4 class="name mb-0">Mei Led</h4>
-        <p class="rol">Administrador</p>
+        <h4 class="name mb-0">{{name}}</h4>
+        <p class="rol">En Línea</p>
 
         <mat-divider></mat-divider>
 
-        <button mat-button class="menu-button">
+        <button mat-button class="menu-button" [routerLink]="['/principal']">
             <mat-icon>home</mat-icon>
             <span>Inicio</span>
         </button>
@@ -41,7 +40,7 @@
 
         <mat-divider></mat-divider>
 
-        <button mat-button class="menu-button">
+        <button mat-button class="menu-button" (click)="logout()">
             <mat-icon>logout</mat-icon>
             <span>Cerrar sesión</span>
         </button>

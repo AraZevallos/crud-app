@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +10,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   hide: boolean = false;
+  name: string = '';
 
   loginForm!: FormGroup;
-  constructor() {
-  }
+  constructor(public router: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup(
       {
-        email: new FormControl('',[Validators.required, Validators.email]),
-        password: new FormControl('',[Validators.required, Validators.minLength(8)])
+        name: new FormControl('', [Validators.required])
       }
     )
   }
 
-  onLogin(){
-    if (!this.loginForm.valid) {
-      return;
-    }
-    console.log(this.loginForm.value);
+  onSubmit() {
+    localStorage.setItem('user', this.loginForm.value['name']);
+    this.router.navigate(['principal']);
   }
 
 }
